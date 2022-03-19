@@ -23,7 +23,6 @@ import { activateExtension } from '../shared/utilities/vsCodeUtils'
 import { VSCODE_EXTENSION_ID } from '../shared/extensions'
 import { initializeIconPaths } from '../shared/icons'
 import { FakeExtensionContext } from './fakeExtensionContext'
-import { sleep } from '../shared/utilities/promiseUtilities'
 
 const testReportDir = join(__dirname, '../../../.test-reports')
 const testLogOutput = join(testReportDir, 'testLog.log')
@@ -37,9 +36,6 @@ before(async function () {
         await remove(testLogOutput)
     } catch (e) {}
     mkdirpSync(testReportDir)
-
-    // XXX: just to see...
-    await sleep(5000)
 
     // Extension activation has many side-effects such as changing globals
     // For stability in tests we will wait until the extension has activated prior to injecting mocks
