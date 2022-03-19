@@ -21,7 +21,7 @@ import { setupVSCodeTestInstance } from './launchTestUtilities'
             extensionDevelopmentPath: rootDir,
             extensionTestsPath: testEntrypoint,
             // For verbose VSCode logs, add "--verbose --log debug". c2165cf48e62c
-            launchArgs: [testWorkspace, '--verbose', '--log', 'debug'],
+            launchArgs: [testWorkspace],
             extensionTestsEnv: {
                 ['DEVELOPMENT_PATH']: rootDir,
                 ['AWS_TOOLKIT_AUTOMATION']: 'unit',
