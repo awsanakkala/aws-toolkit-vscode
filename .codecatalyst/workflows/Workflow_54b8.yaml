@@ -1,0 +1,31 @@
+Name: Workflow_54b8
+SchemaVersion: "1.0"
+
+# Optional - Set automatic triggers.
+Triggers:
+  - Type: Push
+    Branches:
+      - main
+
+# Required - Define action configurations.
+Actions:
+  Build_97:
+    Identifier: aws/build@v1
+
+    Inputs:
+      Sources:
+        - WorkflowSource # This specifies that the action requires this Workflow as a source
+
+    Outputs:
+      AutoDiscoverReports:
+        Enabled: true
+        # Use as prefix for the report files
+        ReportNamePrefix: rpt
+
+    Configuration:
+      Steps:
+        - Run: echo "Hello, World!"
+        - Run: echo "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>" >> report.xml
+        - Run: echo "<testsuite tests=\"1\" name=\"TestAgentJunit\" >" >> report.xml
+        - Run: echo "<testcase classname=\"TestAgentJunit\" name=\"Dummy
+            Test\"/></testsuite>" >> report.xml
